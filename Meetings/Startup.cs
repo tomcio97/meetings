@@ -31,6 +31,7 @@ namespace Meetings
 
             services.AddTransient<IMeetingRepository, MeetingRepository>();
             services.AddTransient<IParticipantRepository, ParticipantRepository>();
+            services.AddAutoMapper(typeof(Startup).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
