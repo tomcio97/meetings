@@ -1,4 +1,6 @@
 using Meetings.Database;
+using Meetings.Database.Repositories;
+using Meetings.Domain.Interfaces.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +28,9 @@ namespace Meetings
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
+
+            services.AddTransient<IMeetingRepository, MeetingRepository>();
+            services.AddTransient<IParticipantRepository, ParticipantRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
